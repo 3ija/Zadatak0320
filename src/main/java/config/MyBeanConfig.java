@@ -15,8 +15,7 @@ import service.impl.MessageServiceImpl;
 		"main"
 })
 public class MyBeanConfig {
-	
-	
+
 	
 	
 }

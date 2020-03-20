@@ -15,13 +15,12 @@ public class Main {
 		BeanFactory container = new AnnotationConfigApplicationContext(MyBeanConfig.class);
 		Main main = (Main)container.getBean("main");
 		//main.annotationConfig();
-		main.saveMessage("Gladan sam!!!");
+		main.saveMessage(container, "Gladan sam!!!");
 		
 		((AnnotationConfigApplicationContext) container).close();
 	}
 
-	private void annotationConfig() {
-		BeanFactory container = new AnnotationConfigApplicationContext(MyBeanConfig.class);
+	private void annotationConfig(BeanFactory container) {
 		IRepository txtRepository = (IRepository)container.getBean("txtRepository");
 		txtRepository.save("My plain message!");
 		
@@ -31,8 +30,8 @@ public class Main {
 		((AnnotationConfigApplicationContext) container).close();
 	}
 	
-	private void saveMessage(String message) {
-		BeanFactory container = new AnnotationConfigApplicationContext(MyBeanConfig.class);
+	private void saveMessage(BeanFactory container, String message) {
+		
 		MessageService messageService =	container.getBean("messageService", MessageService.class);
 		messageService.save(message, false);
 		((AnnotationConfigApplicationContext) container).close();
